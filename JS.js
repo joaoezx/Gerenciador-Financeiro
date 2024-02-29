@@ -1,25 +1,22 @@
-//var despesas = document.getElementById("Despesas2")
-//var valor = document.getElementById("Valor2")
-
-function AdicionarDespesa(){
+function AdicionarDespesa() {
     var despesas = document.getElementById("Despesas2").value
     document.getElementById("despesaLista").innerHTML += "<li>" + despesas + "</li>"
 
 }
 
-var valores = [] 
+var valores = []
 
 function AdicionarValor() {
-    
+
     var valor = parseFloat(document.getElementById("Valor2").value)
     valores.push(valor)
     document.getElementById("valorLista").innerHTML += "<li>" + "R$" + valor + "</li>"
 }
 
-function conta(){
+function conta() {
     let soma = 0;
-    for(var a = 0; a < valores.length; a++) {
-    soma += valores[a]
+    for (var a = 0; a < valores.length; a++) {
+        soma += valores[a]
     }
 
     document.getElementById("resultado").innerHTML = `Total de Despesas: R$${soma.toFixed(2)}`
