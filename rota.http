@@ -1,0 +1,20 @@
+POST http://localhost:3333/conta
+Content-Type: application/json
+// CRIA
+
+{
+    "valor":
+}
+
+###
+
+GET  http://localhost:3333/conta
+
+###
+
+PUT http://localhost:3333/conta/
+Content-Type: application/json
+
+{
+    "valor"
+}
