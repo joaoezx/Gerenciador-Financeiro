@@ -3,7 +3,7 @@ Content-Type: application/json
 // CRIA
 
 {
-    "valor":
+    "AdicionarValor": 10
 }
 
 ###
@@ -16,5 +16,5 @@ PUT http://localhost:3333/conta/
 Content-Type: application/json
 
 {
-    "valor"
+    "AdicionarValor": 10
 }

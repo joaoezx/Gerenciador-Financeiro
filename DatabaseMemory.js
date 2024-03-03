@@ -16,12 +16,12 @@ export class DatabaseMemory {
     }
 
     create(conta) {
-        const valorId = randomUUI()
+        const valorId = randomUUID()
 
-        this.#conta.set(valorId, valor)
+        this.#conta.set(valorId, AdicionarValor)
     }
 
-    uptade(id, valor) {
-        this.#conta.set(id, valor)
+    uptade(id, AdicionarValor) {
+        this.#conta.set(id, AdicionarValor)
     }
 }
