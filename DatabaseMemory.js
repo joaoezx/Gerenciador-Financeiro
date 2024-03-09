@@ -1,10 +1,10 @@
 import {randomUUID} from "node:crypto"
 
 export class DatabaseMemory {
-    #conta = new Map()
+    conta = new Map()
 
     list(){
-        return Array.from(this.#conta.entries()).map((valorArray) => {
+        return Array.from(this.conta.entries()).map((valorArray) => {
             const id = valorArray[0]
             const data = valorArray[1]
 
@@ -16,12 +16,12 @@ export class DatabaseMemory {
     }
 
     create(conta) {
-        const valorId = randomUUID()
-
-        this.#conta.set(valorId, AdicionarValor)
+        const valorId = randomUUID() 
+        
+        this.conta.set(valorId, conta)
     }
 
     uptade(id, AdicionarValor) {
-        this.#conta.set(id, AdicionarValor)
+        this.conta.set(id, AdicionarValor)
     }
 }

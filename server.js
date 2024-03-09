@@ -8,7 +8,6 @@ const database = new DatabaseMemory()
 
 server.post("/conta", (request, response) => {
     const {AdicionarValor} = request.body
-
     database.create({
         AdicionarValor
     })
