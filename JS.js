@@ -6,7 +6,7 @@ function AdicionarDespesa() {
 
 var valores = []
 
-export function AdicionarValor() {
+function AdicionarValor() {
 
    var valor = parseFloat(document.getElementById("Valor2").value)
     valores.push(valor)

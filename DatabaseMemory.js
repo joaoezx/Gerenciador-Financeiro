@@ -5,11 +5,11 @@ export class DatabaseMemory {
 
     list(){
         return Array.from(this.conta.entries()).map((valorArray) => {
-            const id = valorArray[0]
+            const valorId = valorArray[0]
             const data = valorArray[1]
 
             return {
-                id,
+                valorId,
                 ...data,
             }
         })
@@ -21,7 +21,11 @@ export class DatabaseMemory {
         this.conta.set(valorId, conta)
     }
 
-    uptade(id, AdicionarValor) {
-        this.conta.set(id, AdicionarValor)
+    update(valorId, conta) {
+        this.conta.set(valorId, conta)
+    }
+
+    delete(valorId) {
+        this.conta.delete(valorId)
     }
 }

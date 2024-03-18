@@ -1,5 +1,4 @@
 import { fastify  } from "fastify"
-import { AdicionarValor } from "./JS.js"
 import { DatabaseMemory } from "./DatabaseMemory.js"
 
 const server = fastify()
@@ -7,28 +6,34 @@ const server = fastify()
 const database = new DatabaseMemory()
 
 server.post("/conta", (request, response) => {
-    const {AdicionarValor} = request.body
-    database.create({
-        AdicionarValor
-    })
+    const conta = request.body
+    database.create(conta)
 
     return response.status(201).send()
 })
 
 server.get("/conta", () => {
-    const AdicionarValor = database.list()
+    const conta = database.list()
 
-    console.log(AdicionarValor)
+    console.log(conta)
 
-    return AdicionarValor
+    return conta
 })
 
-server.put("/conta/:id", (request, response) => {
+server.put("/conta/:valorId", (request, response) => {
 
     const valorId = request.params.valorId
-    // database.uptade(valorId, {
-    //     AdicionarValor
-    // })
+    const conta = request.body
+
+    database.update(valorId, conta)
+
+    return response.status(204).send()
+})
+
+server.delete("/conta/:valorId", (request, response) => {
+    const valorId = request.params.valorId
+
+    database.delete(valorId)
 
     return response.status(204).send()
 })

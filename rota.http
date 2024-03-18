@@ -16,5 +16,9 @@ PUT http://localhost:3333/conta/
 Content-Type: application/json
 
 {
-    "AdicionarValor": 10
+    "AdicionarValor": 144
 }
+
+###
+
+DELETE http://localhost:3333/conta/
