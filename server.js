@@ -1,5 +1,6 @@
 import { fastify  } from "fastify"
 import { DatabaseMemory } from "./DatabaseMemory.js"
+import { valorId } from "./DatabaseMemory"
 
 const server = fastify()
 
@@ -37,6 +38,15 @@ server.delete("/conta/:valorId", (request, response) => {
 
     return response.status(204).send()
 })
+
+fetch("http://localhost:3333/conta/24050d92-a856-4cef-8bc4-be8eda5ad4a5", valorId)
+    .then(response => {
+        console.log(response)
+    })
+    .catch(error => {
+        console.error("Error", error)
+    })
+    
 server.listen({
     port: 3333
 }, (error) => {
