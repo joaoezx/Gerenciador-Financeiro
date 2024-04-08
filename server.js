@@ -1,51 +1,49 @@
 import { fastify  } from "fastify"
-import { DatabaseMemory } from "./DatabaseMemory.js"
-import { valorId } from "./DatabaseMemory"
+//import { DatabaseMemory } from "./DatabaseMemory.js"
+import { DatabasePostgres } from "./database-postgres.js"
 
 const server = fastify()
 
-const database = new DatabaseMemory()
+//const database = new DatabaseMemory()
+const database = new DatabasePostgres()
 
-server.post("/conta", (request, response) => {
-    const conta = request.body
-    database.create(conta)
+server.post("/conta", async (request, response) => {
+    const {Valor} = request.body
+
+   await database.create({
+        Valor
+    })
 
     return response.status(201).send()
 })
 
-server.get("/conta", () => {
-    const conta = database.list()
+server.get("/conta", async (request) => {
+    const search = request.query.search
 
-    console.log(conta)
+    const conta = await database.list(search)
 
     return conta
 })
 
-server.put("/conta/:valorId", (request, response) => {
+server.put("/conta/:valorId", async (request, response) => {
 
     const valorId = request.params.valorId
-    const conta = request.body
+    const {Valor} = request.body
 
-    database.update(valorId, conta)
+    await database.update(valorId, {
+        Valor
+    })
 
     return response.status(204).send()
 })
 
-server.delete("/conta/:valorId", (request, response) => {
+server.delete("/conta/:valorId", async (request, response) => {
     const valorId = request.params.valorId
 
-    database.delete(valorId)
+    await database.delete(valorId)
 
     return response.status(204).send()
 })
-
-fetch("http://localhost:3333/conta/24050d92-a856-4cef-8bc4-be8eda5ad4a5", valorId)
-    .then(response => {
-        console.log(response)
-    })
-    .catch(error => {
-        console.error("Error", error)
-    })
     
 server.listen({
     port: 3333
